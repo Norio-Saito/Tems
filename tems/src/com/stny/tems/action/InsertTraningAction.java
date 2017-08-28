@@ -8,47 +8,47 @@ public class InsertTraningAction extends ActionSupport{
 	/**
 	 * トレーニング名
 	 */
-	private String traning_name;
+	private String name;
 
 	/**
-	 * メニューフラグ（攻撃）
+	 * 練習の局面
 	 */
-	private int offence;
+	private int category;
 
 	/**
-	 * メニューフラグ（守備系）
+	 * トレーニングの目的
 	 */
-	private int defence;
+	private String goal;
 
 	/**
-	 * メニューフラグ（ゴールキーパー）
+	 * トレーニング参加人数の最小値
 	 */
-	private int gk;
+	private int nop_min;
 
 	/**
-	 * メニューフラグ（フィジカル）
+	 * トレーニング参加人数の最大値
 	 */
-	private int phygical;
+	private int nop_max;
 
 	/**
-	 * トレーニング人数
+	 * トレーニング範囲
 	 */
-	private String person;
+	private String organize;
 
 	/**
-	 * トレーニング内容
+	 * トレーニング方法
 	 */
-	private String traning_text;
+	private String procedure;
 
 	/**
-	 * キーワード
+	 * トレーニング中に見るポイント
 	 */
-	private String key_word;
+	private String phenomenon;
 
 	/**
-	 * 画像パス
+	 * トレーニングイメージ
 	 */
-	private String image_path;
+	private String img;
 
 	/**
 	 * トレーニングの情報を登録できたらSUCCESSを返す
@@ -62,136 +62,138 @@ public class InsertTraningAction extends ActionSupport{
 
 		InsertTraningDAO dao = new InsertTraningDAO();
 
-		if(dao.insertTraning(traning_name, offence, defence, gk,phygical,
-				person,traning_text, key_word, image_path) > 0) {
+		if(dao.insertTraning(name, category, goal, nop_min, nop_max, organize, procedure,
+				phenomenon, img) > 0) {
 			result = SUCCESS;
 		}
 		return result;
 	}
 
 	/**
-	 * @return traning_name トレーニング名
+	 * @return name トレーニング名
 	 */
-	public String getTraning_name() {
-		return traning_name;
+	public String getName() {
+		return name;
 	}
 
 	/**
-	 * @param traning_name セットする トレーニング名
+	 * @param name セットする トレーニング名
 	 */
-	public void setTraning_name(String traning_name) {
-		this.traning_name = traning_name;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	/**
-	 * @return メニューフラグ（攻撃系）
+	 * @return category 練習の局面
 	 */
-	public int getOffence() {
-		return offence;
+	public int getCategory() {
+		return category;
 	}
 
 	/**
-	 * @param offence セットする メニューフラグ（攻撃系）
+	 * @param category セットする 練習の局面
 	 */
-	public void setOffence(int offence) {
-		this.offence = offence;
+	public void setCategory(int category) {
+		this.category = category;
 	}
 
 	/**
-	 * @return メニューフラグ（守備系）
+	 * @return goal トレーニングの目的
 	 */
-	public int getDefence() {
-		return defence;
+	public String getGoal() {
+		return goal;
 	}
 
 	/**
-	 * @param defence セットする メニューフラグ（守備系）
+	 * @param goal セットする トレーニングの目的
 	 */
-	public void setDefence(int defence) {
-		this.defence = defence;
+	public void setGoal(String goal) {
+		this.goal = goal;
 	}
 
 	/**
-	 * @return メニューフラグ（ゴールキーパー）
+	 * @return nop_min トレーニング参加人数の最小値
 	 */
-	public int getGk() {
-		return gk;
+	public int getNop_min() {
+		return nop_min;
 	}
 
 	/**
-	 * @param gk セットする メニューフラグ（ゴールキーパー）
+	 * @param nop_min セットする トレーニング参加人数の最小値
 	 */
-	public void setGk(int gk) {
-		this.gk = gk;
+	public void setNop_min(int nop_min) {
+		this.nop_min = nop_min;
 	}
 
 	/**
-	 * @return メニューフラグ（フィジカル）
+	 * @return nop_max トレーニング参加人数の最大値
 	 */
-	public int getPhygical() {
-		return phygical;
+	public int getNop_max() {
+		return nop_max;
 	}
 
 	/**
-	 * @param phygical セットする メニューフラグ（フィジカル）
+	 * @param nop_max セットする トレーニング参加人数の最大値
 	 */
-	public void setPhygical(int phygical) {
-		this.phygical = phygical;
+	public void setNop_max(int nop_max) {
+		this.nop_max = nop_max;
 	}
 
 	/**
-	 * @return トレーニング人数
+	 * @return organize トレーニング範囲
 	 */
-	public String getPerson() {
-		return person;
+	public String getOrganize() {
+		return organize;
 	}
 
 	/**
-	 * @param person セットする トレーニング人数
+	 * @param organize セットする トレーニング範囲
 	 */
-	public void setPerson(String person) {
-		this.person = person;
+	public void setOrganize(String organize) {
+		this.organize = organize;
 	}
 
 	/**
-	 * @return トレーニング内容
+	 * @return procedure トレーニグング方法
 	 */
-	public String getTraning_text() {
-		return traning_text;
+	public String getProcedure() {
+		return procedure;
 	}
 
 	/**
-	 * @param traning_text セットする トレーニング内容
+	 * @param procedure セットする トレーニング方法
 	 */
-	public void setTraning_text(String traning_text) {
-		this.traning_text = traning_text;
+	public void setProcedure(String procedure) {
+		this.procedure = procedure;
 	}
 
 	/**
-	 * @return キーワード
+	 * @return phenomenon トレーニング中に見るべきポイント
 	 */
-	public String getKey_word() {
-		return key_word;
+	public String getPhenomenon() {
+		return phenomenon;
 	}
 
 	/**
-	 * @param key_word セットする キーワード
+	 * @param phenomenon セットする phenomenon
 	 */
-	public void setKey_word(String key_word) {
-		this.key_word = key_word;
+	public void setPhenomenon(String phenomenon) {
+		this.phenomenon = phenomenon;
 	}
 
 	/**
-	 * @return 画像パス
+	 * @return img
 	 */
-	public String getImage_path() {
-		return image_path;
+	public String getImg() {
+		return img;
 	}
 
 	/**
-	 * @param image_path セットする 画像パス
+	 * @param img セットする img
 	 */
-	public void setImage_path(String image_path) {
-		this.image_path = image_path;
+	public void setImg(String img) {
+		this.img = img;
 	}
+
+
 }

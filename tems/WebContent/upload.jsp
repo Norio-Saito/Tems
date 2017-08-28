@@ -19,8 +19,9 @@
 		<![endif]-->
 <style media="screen">
 form div {
-	margin: 10px;
+	margin: 30px;
 }
+
 </style>
 </head>
 <body>
@@ -61,17 +62,17 @@ form div {
 					<!-- トレーニング名の入力フォーム -->
 					<div class="input-group">
 						<span class="input-group-addon">トレーニング名</span> <input type="text"
-							name="traning_name" class="form-control" placeholder="トレーニング名を入力">
+							name="name" class="form-control" placeholder="トレーニング名を入力">
 					</div>
 					<!-- トレーニング種別のドロップダウン -->
 										<!-- 選択ボックス -->
 										<div class="input-group">
 											<span class="input-group-addon">トレーニング種別を選択</span>
-											<select class="form-control" style="width:30%;">
-												<option value="1">攻撃系</option>
+											<select class="form-control" style="width:30%;" name="category">
+												<option value="0">攻撃系</option>
 												<option value="1">守備系</option>
-												<option value="1">GK</option>
-												<option value="1">フィジカル</option>
+												<option value="2">ポゼッション</option>
+												<option value="3">セットプレー</option>
 											</select>
 										</div>
 <!-- 					<div class="btn-group"> -->
@@ -90,21 +91,40 @@ form div {
 <!-- 								href="#">フィジカル</a></li> -->
 <!-- 						</ul> -->
 <!-- 					</div> -->
+						<!-- 目標 -->
+						<div class="input-group">
+						<span class="input-group-addon">トレーニングの目的</span> <input type="text"
+							name="goal" class="form-control" placeholder="選手間の連動性を高めるなど">
+					</div>
 					<!-- 人数を入力 -->
 					<div class="input-group">
-						<span class="input-group-addon">人数</span> <input type="text"
-							name="person" class="form-control" placeholder="トレーニング人数を入力">
+						<!-- 最小人数を入力 -->
+						<span class="input-group-addon">最小人数</span> <input type="text"
+							name="nop_min" class="form-control" placeholder="トレーニング人数を入力">
+							<!-- 最大人数を入力 -->
+							<span class="input-group-addon">最大人数</span> <input type="text"
+							name="nop_max" class="form-control" placeholder="トレーニング人数を入力">
+					</div>
+					<!-- トレーニング範囲 -->
+					<div class="input-group">
+						<span class="input-group-addon">トレーニング範囲</span> <input type="text"
+							name="organize" class="form-control" placeholder="15m X 15m">
 					</div>
 					<!-- 内容を入力 -->
 					<div class="input-group">
 						<span class="input-group-addon">トレーニング内容</span>
-						<textarea name="traning_text" class="form-control"
+						<textarea name="procedure" class="form-control" rows="15"
 							placeholder="具体的なトレーニングの内容を入力"></textarea>
+					</div>
+					<!-- 見るべきポイント -->
+					<div class="input-group">
+						<span class="input-group-addon">見るべきポイント</span> <input type="text"
+							name="phenomenon" class="form-control" placeholder="アプローチの早さなど">
 					</div>
 					<!-- キーワード -->
 					<div class="input-group">
 						<span class="input-group-addon">キーワード</span> <input type="text"
-							name="key_word" class="form-control" placeholder="シュートなど">
+							name="keyword" class="form-control" placeholder="シュートなど">
 					</div>
 					<!-- 画像ファイルの選択 -->
 					<div class="input-group text-center">

@@ -19,36 +19,36 @@ public class InsertTraningDAO {
 	 * @author NORIO SAITO
 	 * @since 2017/8/27
 	 * @version 1.0
-	 * @param traning_name トレーニング名
-	 * @param offence メニューフラグ（攻撃）
-	 * @param defence メニューフラグ（守備）
-	 * @param gk メニューフラグ（ゴールキーパー）
-	 * @param phygical メニューフラグ（フィジカル）
-	 * @param person トレーニング人数
-	 * @param traning_text トレーニング人数
-	 * @param key_word キーワード
-	 * @param image_path 画像パス
+	 * @param name トレーニング名
+	 * @param category 練習の局面
+	 * @param goal トレーニングの目的
+	 * @param nop_min トレーニング人数の最小値
+	 * @param nop_max トレーニング人数の最大値
+	 * @param organize トレーニング範囲
+	 * @param procedure トレーニング方法
+	 * @param phenomenon トレーニング中に見るべきポイント
+	 * @param img 画像パス
 	 */
-	public int insertTraning(String traning_name, int offence, int defence, int gk,
-			int phygical, String person, String traning_text, String key_word, String image_path) {
+	public int insertTraning(String name, int category, String goal, int nop_min,
+			int nop_max, String organize, String procedure, String phenomenon, String img) {
 		int count = 0;
 
 		Connection con = DBConnector.getConnection();
-		String sql = "INSERT INTO traning(traning_name, offence, defence, gk, phygical,"
-				+ "person, traning_text, key_word, traning_image) "
+		String sql = "INSERT INTO traning_main(name, category, goal, nop_min, nop_max,"
+				+ "organize, procedure, phenomenon, img) "
 				+ "VALUE(?,?,?,?,?,?,?,?,?)";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1, traning_name);
-			ps.setInt(2, offence);
-			ps.setInt(3, defence);
-			ps.setInt(4, gk);
-			ps.setInt(5, phygical);
-			ps.setString(6, person);
-			ps.setString(7, traning_text);
-			ps.setString(8, key_word);
-			ps.setString(9, image_path);
+			ps.setString(1, name);
+			ps.setInt(2, category);
+			ps.setString(3, goal);
+			ps.setInt(4, nop_min);
+			ps.setInt(5, nop_max);
+			ps.setString(6, organize);
+			ps.setString(7, procedure);
+			ps.setString(8, phenomenon);
+			ps.setString(9, img);
 
 			System.out.println(sql);
 
