@@ -85,7 +85,7 @@
         </div>
       </div>
       <!-- トレーニングの一覧。のちにイテレータで表示 -->
-      <!-- カテゴリの値によってパネルの色を変えたい -->
+      <!-- カテゴリの値によってパネルの色を変える予定 -->
       <section class="traning_list ">
       <s:iterator value="traningList">
 		<div class="panel panel-danger">
