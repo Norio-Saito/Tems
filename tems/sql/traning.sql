@@ -5,12 +5,12 @@ use tems;
 create table traning_main (
   traning_id int auto_increment,
   name varchar(50) not null,
-  aspect int not null,
+  category int not null,
   goal varchar(100),
   nop_min int,
   nop_max int,
   organize varchar(100),
-  category varchar(255),
+  traning_text varchar(255),
   phenomenon varchar(100),
   img varchar(255),
   primary key (traning_id)

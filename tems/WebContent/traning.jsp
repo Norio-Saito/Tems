@@ -85,7 +85,23 @@
         </div>
       </div>
       <!-- トレーニングの一覧。のちにイテレータで表示 -->
+      <!-- カテゴリの値によってパネルの色を変えたい -->
       <section class="traning_list ">
+      <s:iterator value="traningList">
+		<div class="panel panel-danger">
+	        <div class="panel-heading">
+		        <s:property value="name"/>
+	        </div>
+	        <div class="panel-body" class="row">
+	        		<div class="col-sm-3">
+	        		<img src="img/<s:property value="img"/>" style="width:100%">
+	        		</div>
+		        <div class="col-sm-offset-1 col-sm-5">
+		        <s:property value="traning_text" />
+		        </div>
+	        </div>
+        </div>
+      </s:iterator>
         <!-- 攻撃系のパネル -->
         <div class="panel panel-danger">
 	        <div class="panel-heading">

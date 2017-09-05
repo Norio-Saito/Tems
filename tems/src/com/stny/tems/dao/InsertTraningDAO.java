@@ -25,17 +25,17 @@ public class InsertTraningDAO {
 	 * @param nop_min トレーニング人数の最小値
 	 * @param nop_max トレーニング人数の最大値
 	 * @param organize トレーニング範囲
-	 * @param procedure トレーニング方法
+	 * @param traning_text トレーニング方法
 	 * @param phenomenon トレーニング中に見るべきポイント
 	 * @param img 画像パス
 	 */
 	public int insertTraning(String name, int category, String goal, int nop_min,
-			int nop_max, String organize, String procedure, String phenomenon, String img) {
+			int nop_max, String organize, String traning_text, String phenomenon, String img) {
 		int count = 0;
 
 		Connection con = DBConnector.getConnection();
 		String sql = "INSERT INTO traning_main(name, category, goal, nop_min, nop_max,"
-				+ "organize, procedure, phenomenon, img) "
+				+ "organize, traning_text, phenomenon, img) "
 				+ "VALUE(?,?,?,?,?,?,?,?,?)";
 
 		try {
@@ -46,11 +46,9 @@ public class InsertTraningDAO {
 			ps.setInt(4, nop_min);
 			ps.setInt(5, nop_max);
 			ps.setString(6, organize);
-			ps.setString(7, procedure);
+			ps.setString(7, traning_text);
 			ps.setString(8, phenomenon);
 			ps.setString(9, img);
-
-			System.out.println(sql);
 
 			count = ps.executeUpdate();
 		}catch(SQLException e) {

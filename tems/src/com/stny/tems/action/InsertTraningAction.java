@@ -38,7 +38,7 @@ public class InsertTraningAction extends ActionSupport{
 	/**
 	 * トレーニング方法
 	 */
-	private String procedure;
+	private String traning_text;
 
 	/**
 	 * トレーニング中に見るポイント
@@ -49,6 +49,11 @@ public class InsertTraningAction extends ActionSupport{
 	 * トレーニングイメージ
 	 */
 	private String img;
+
+	/**
+	 * キーワード
+	 */
+	private String keyword;
 
 	/**
 	 * トレーニングの情報を登録できたらSUCCESSを返す
@@ -62,7 +67,7 @@ public class InsertTraningAction extends ActionSupport{
 
 		InsertTraningDAO dao = new InsertTraningDAO();
 
-		if(dao.insertTraning(name, category, goal, nop_min, nop_max, organize, procedure,
+		if(dao.insertTraning(name, category, goal, nop_min, nop_max, organize, traning_text,
 				phenomenon, img) > 0) {
 			result = SUCCESS;
 		}
@@ -154,20 +159,6 @@ public class InsertTraningAction extends ActionSupport{
 	}
 
 	/**
-	 * @return procedure トレーニグング方法
-	 */
-	public String getProcedure() {
-		return procedure;
-	}
-
-	/**
-	 * @param procedure セットする トレーニング方法
-	 */
-	public void setProcedure(String procedure) {
-		this.procedure = procedure;
-	}
-
-	/**
 	 * @return phenomenon トレーニング中に見るべきポイント
 	 */
 	public String getPhenomenon() {
@@ -193,6 +184,34 @@ public class InsertTraningAction extends ActionSupport{
 	 */
 	public void setImg(String img) {
 		this.img = img;
+	}
+
+	/**
+	 * @return keyword
+	 */
+	public String getKeyword() {
+		return keyword;
+	}
+
+	/**
+	 * @param keyword セットする keyword
+	 */
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+
+	/**
+	 * @return traning_text トレーニング方法
+	 */
+	public String getTraning_text() {
+		return traning_text;
+	}
+
+	/**
+	 * @param traning_text セットする traning_text トレーニング方法
+	 */
+	public void setTraning_text(String traning_text) {
+		this.traning_text = traning_text;
 	}
 
 

@@ -113,7 +113,7 @@ form div {
 					<!-- 内容を入力 -->
 					<div class="input-group">
 						<span class="input-group-addon">トレーニング内容</span>
-						<textarea name="procedure" class="form-control" rows="15"
+						<textarea name="traning_text" class="form-control" rows="15"
 							placeholder="具体的なトレーニングの内容を入力"></textarea>
 					</div>
 					<!-- 見るべきポイント -->
@@ -129,7 +129,7 @@ form div {
 					<!-- 画像ファイルの選択 -->
 					<div class="input-group text-center">
 						<span class="input-group-addon">画像</span> <input type="file"
-							name="traning_image" class="form-control">
+							name="img" class="form-control">
 					</div>
 					<!-- 送信ボタン -->
 					<div class="text-center">
