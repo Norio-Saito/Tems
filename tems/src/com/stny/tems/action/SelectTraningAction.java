@@ -25,8 +25,8 @@ public class SelectTraningAction extends ActionSupport{
 
 		SelectTraningDAO dao = new SelectTraningDAO();
 		if(dao.SelectTraningList()) {
-			setTraningList(dao.getTraningList());
-
+			setTraningList(dao.getTraningList());;
+			
 			//ページネーション作成の処理を入れるかも
 
 			result = SUCCESS;
