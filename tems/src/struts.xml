@@ -9,13 +9,19 @@
 <!-- トレーニングをDBに登録するアクション -->
 <action name="InsertTraningAction" class="com.stny.tems.action.InsertTraningAction" method="execute">
 	<result name="success" type="chain">SelectTraningAction</result>
-	<result name="error">upload.jsp</result>
+	<result name="error">index.jsp</result>
 </action>
 
 <!-- トレーニングを表示するアクション -->
 <action name="SelectTraningAction" class="com.stny.tems.action.SelectTraningAction" method="execute">
 	<result name="success">traning.jsp</result>
 	<result name="error">upload.jsp</result>
+</action>
+
+<!-- 投稿ページへ遷移するアクション -->
+<action name="GoUploadAction" class="com.stny.tems.action.GoUploadAction" method="execute">
+	<result name="success">upload.jsp</result>
+	<result name="error">index.jsp</result>
 </action>
 	</package>
 </struts>
