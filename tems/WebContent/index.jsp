@@ -20,7 +20,7 @@
 </head>
 <body>
 	<header>
-
+		<jsp:include page="header.jsp" />
 	</header>
 	<article>
 		<a href="SelectTraningAction">トレーニング一覧</a>

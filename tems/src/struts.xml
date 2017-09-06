@@ -6,6 +6,11 @@
 
 	<package name="com.stny.tems.action"  extends="struts-default">
 
+<!-- Top画面へ遷移するアクション -->
+<action name="GoTopAction" class="com.stny.tems.action.GoTopAction" method="execute">
+	<result name="success">index.jsp</result>
+</action>
+
 <!-- トレーニングをDBに登録するアクション -->
 <action name="InsertTraningAction" class="com.stny.tems.action.InsertTraningAction" method="execute">
 	<result name="success" type="chain">SelectTraningAction</result>

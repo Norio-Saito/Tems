@@ -20,31 +20,7 @@
 </head>
 <body>
 	<header>
-		<h2>トレーニング</h2>
-		<nav class="navbar navbar-inverse">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed"
-						data-toggle="collapse" data-target="#navbarEexample7">
-						<span class="sr-only">Toggle navigation</span> <span
-							class="icon-bar"></span> <span class="icon-bar"></span> <span
-							class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="#"> タイトル </a>
-				</div>
-
-				<div class="collapse navbar-collapse" id="navbarEexample7">
-					<ul class="nav navbar-nav">
-						<li><a href="#">メニューＡ</a></li>
-						<li class="active"><a href="#">メニューＢ</a></li>
-						<li><a href="#">メニューＣ</a></li>
-					</ul>
-					<p class="navbar-text navbar-right">
-						ようこそ <a href="#" class="navbar-link">ゲスト</a> さん。
-					</p>
-				</div>
-			</div>
-		</nav>
+		<jsp:include page="header.jsp" />
 	</header>
 	<article class="main container">
 		<div class="row">
@@ -129,6 +105,22 @@
 				<s:elseif test="category == 2">
 					<!-- ポゼッション(黄） -->
 					<div class="panel panel-warning">
+						<div class="panel-heading">
+							<s:property value="name" />
+						</div>
+						<div class="panel-body" class="row">
+							<div class="col-sm-3">
+								<img src="img/<s:property value="img"/>" style="width: 100%">
+							</div>
+							<div class="col-sm-offset-1 col-sm-5">
+								<s:property value="traning_text" />
+							</div>
+						</div>
+					</div>
+				</s:elseif>
+				<s:elseif test="category == 3">
+					<!-- セットプレー(緑） -->
+					<div class="panel panel-success">
 						<div class="panel-heading">
 							<s:property value="name" />
 						</div>
