@@ -50,22 +50,6 @@ form div {
 												<option value="3">セットプレー</option>
 											</select>
 										</div>
-<!-- 					<div class="btn-group"> -->
-<!-- 						<button type="button" class="btn btn-default dropdown-toggle" -->
-<!-- 							data-toggle="dropdown" aria-expanded="false"> -->
-<%-- 							トレーニングの種類を選択 <span class="caret"></span> --%>
-<!-- 						</button> -->
-<!-- 						<ul class="dropdown-menu" role="menu"> -->
-<!-- 							<li role="presentation"><a role="menuitem" tabindex="-1" -->
-<!-- 								href="#">攻撃系</a></li> -->
-<!-- 							<li role="presentation"><a role="menuitem" tabindex="-1" -->
-<!-- 								href="#">守備系</a></li> -->
-<!-- 							<li role="presentation"><a role="menuitem" tabindex="-1" -->
-<!-- 								href="#">ゴールキーパー</a></li> -->
-<!-- 							<li role="presentation"><a role="menuitem" tabindex="-1" -->
-<!-- 								href="#">フィジカル</a></li> -->
-<!-- 						</ul> -->
-<!-- 					</div> -->
 						<!-- 目標 -->
 						<div class="input-group">
 						<span class="input-group-addon">トレーニングの目的</span> <input type="text"
