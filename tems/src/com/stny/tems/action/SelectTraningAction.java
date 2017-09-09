@@ -14,6 +14,12 @@ public class SelectTraningAction extends ActionSupport{
 	private ArrayList<SelectTraningDTO> traningList = new ArrayList<>();
 
 	/**
+	 * トレーニングID
+	 */
+//	private String traning_id;
+
+
+	/**
 	 * トレーニング一覧を取得できたら、SUCCESSを返すメソッド
 	 * @author user Norio Saito
 	 * @since 2017/9/5
@@ -23,10 +29,14 @@ public class SelectTraningAction extends ActionSupport{
 	public String execute() {
 		String result = ERROR;
 
+//		if(traning_id == null) {
+//			traning_id = "";
+//		}
+
 		SelectTraningDAO dao = new SelectTraningDAO();
 		if(dao.SelectTraningList()) {
 			setTraningList(dao.getTraningList());;
-			
+
 			//ページネーション作成の処理を入れるかも
 
 			result = SUCCESS;
@@ -47,4 +57,18 @@ public class SelectTraningAction extends ActionSupport{
 	public void setTraningList(ArrayList<SelectTraningDTO> traningList) {
 		this.traningList = traningList;
 	}
+
+	/**
+	 * @return traning_id トレーニングID
+	 */
+//	public String getTraning_id() {
+//		return traning_id;
+//	}
+//
+//	/**
+//	 * @param traning_id トレーニングIDをセットする traning_id トレーニングID
+//	 */
+//	public void setTraning_id(String traning_id) {
+//		this.traning_id = traning_id;
+//	}
 }

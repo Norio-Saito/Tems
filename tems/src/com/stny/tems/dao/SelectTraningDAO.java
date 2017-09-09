@@ -33,13 +33,14 @@ public class SelectTraningDAO {
 		boolean result = false;
 
 		Connection con = DBConnector.getConnection();
-		String sql = "SELECT * FROM traning_main ";
+		String sql = "SELECT * FROM traning_main";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {
 				SelectTraningDTO dto = new SelectTraningDTO();
+
 				dto.setTraning_id(rs.getInt("traning_id"));
 				dto.setName(rs.getString("name"));
 				dto.setCategory(rs.getInt("category"));

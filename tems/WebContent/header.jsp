@@ -8,7 +8,6 @@
 <html>
 <head>
 <body>
-	<h2>Tems</h2>
 		<nav class="navbar navbar-inverse">
 			<div class="container-fluid">
 				<div class="navbar-header">
@@ -18,7 +17,7 @@
 							class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="GoTopAction"> Top </a>
+					<a class="navbar-brand" href="GoTopAction"> Tems </a>
 				</div>
 
 				<div class="collapse navbar-collapse" id="navbarEexample7">
