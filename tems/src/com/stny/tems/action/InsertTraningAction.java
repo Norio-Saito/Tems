@@ -69,7 +69,12 @@ public class InsertTraningAction extends ActionSupport{
 
 		if(dao.insertTraning(name, category, goal, nop_min, nop_max, organize, traning_text,
 				phenomenon, img) > 0) {
+
+			if(dao.insertKeyword(keyword) > 0) {
+
+
 			result = SUCCESS;
+			}
 		}
 		return result;
 	}
