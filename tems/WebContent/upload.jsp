@@ -81,10 +81,13 @@ form div {
 							name="phenomenon" class="form-control" placeholder="アプローチの早さなど">
 					</div>
 					<!-- キーワード -->
-					<div class="input-group">
-						<span class="input-group-addon">キーワード</span> <input type="text"
+					<div class="input-group" id="keyword1">
+						<span class="input-group-addon">キーワード1</span> <input type="text"
 							name="keyword" class="form-control" placeholder="シュートなど">
 					</div>
+					<div class="btn btn-default" id="addForm">
+								キーワードを追加
+							</div>
 					<!-- 画像ファイルの選択 -->
 					<div class="input-group text-center">
 						<span class="input-group-addon">画像</span> <input type="file"
@@ -105,5 +108,27 @@ form div {
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+	<script>
+	$(function() {
+		/***************************************************************************
+		 * afterは要素の後ろに追加
+		 **************************************************************************/
+		// btn_demoBがクリックされた時...
+		var count = 1;
+		var id = 2;
+		$('#addForm')
+				.click(
+						function() {
+							// demoBの中のpタグにafterの処理をする ※pタグの直後に追加
+							$('#keyword' + count)
+									.after('<div class="input-group" id="keyword' + id +'">'
+											+'<span class="input-group-addon">キーワード' + id + '</span> <input type="text"'
+											+'name="keyword" class="form-control" placeholder="シュートなど">'
+											+'</div>');
+							count++;
+							id++;
+						});
+	});
+	</script>
 </body>
 </html>
