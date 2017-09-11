@@ -72,6 +72,7 @@ public class InsertTraningDAO {
 			while (rs.next()) {
 				traning_id = rs.getInt(1);
 			}
+
 			System.out.println(traning_id);
 
 		} catch (SQLException e) {
