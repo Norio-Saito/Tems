@@ -29,10 +29,16 @@
 		<jsp:include page="header.jsp" />
 	</header>
 	<article>
+	<div class="input-group input-group-lg" style="text-align:center; width:40%; margin-left:430px; margin-top:300px;">
+	<input type="text" class="form-control" placeholder="テキスト入力欄">
+	<span class="input-group-btn">
+		<button type="button" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+	</div>
 	<div>
-		<a href="SelectTraningAction" class="button hvr-float-shadow" style="font-size:30px;margin-top:300px;
+		<a href="SelectTraningAction" class="button hvr-float-shadow" style="font-size:30px;margin-top:50px;
 			">トレーニング一覧</a>
-		<a href="GoUploadAction" class="button hvr-float-shadow" style="font-size:30px; width:266px; margin-top:300px;">投稿する</a>
+		<a href="GoUploadAction" class="button hvr-float-shadow" style="font-size:30px; width:266px; margin-top:50px;">投稿する</a>
 		</div>
 	</article>
 	<footer>

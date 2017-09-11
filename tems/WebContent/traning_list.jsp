@@ -90,7 +90,7 @@
 					<!-- 守備系のメニュー(青） -->
 					<div class="panel panel-info">
 						<div class="panel-heading">
-							<s:property value="name" />
+							<a href="SelectTraningAction"><s:property value="name" /></a>
 						</div>
 						<div class="panel-body" class="row">
 							<div class="col-sm-3">
@@ -106,7 +106,7 @@
 					<!-- ポゼッション(黄） -->
 					<div class="panel panel-warning">
 						<div class="panel-heading">
-							<s:property value="name" />
+							<a href="SelectTraningAction"><s:property value="name" /></a>
 						</div>
 						<div class="panel-body" class="row">
 							<div class="col-sm-3">
@@ -122,7 +122,7 @@
 					<!-- セットプレー(緑） -->
 					<div class="panel panel-success">
 						<div class="panel-heading">
-							<s:property value="name" />
+							<a href="SelectTraningAction"><s:property value="name" /></a>
 						</div>
 						<div class="panel-body" class="row">
 							<div class="col-sm-3">
