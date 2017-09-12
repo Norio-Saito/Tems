@@ -23,7 +23,7 @@
 				<div class="collapse navbar-collapse" id="navbarEexample7">
 					<ul class="nav navbar-nav">
 						<li><a href="SelectTraningAction">Traning List</a></li>
-						<li class="active"><a href="GoUploadAction">Upload New Traning</a></li>
+						<li><a href="GoUploadAction">Upload New Traning</a></li>
 						<li><a href="#">メニューＣ</a></li>
 					</ul>
 					<p class="navbar-text navbar-right">

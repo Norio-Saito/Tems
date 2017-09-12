@@ -1,9 +1,11 @@
 package com.stny.tems.action;
 
+import java.util.ArrayList;
+
 import com.opensymphony.xwork2.ActionSupport;
 import com.stny.tems.dao.InsertTraningDAO;
 
-public class InsertTraningAction extends ActionSupport{
+public class InsertTraningAction extends ActionSupport {
 
 	/**
 	 * トレーニング名
@@ -53,10 +55,11 @@ public class InsertTraningAction extends ActionSupport{
 	/**
 	 * キーワード
 	 */
-	private String keyword;
+	private ArrayList<String> getkeyword = new ArrayList<>();
 
 	/**
 	 * トレーニングの情報を登録できたらSUCCESSを返す
+	 *
 	 * @author NORIO SAITO
 	 * @since 2017/8/27
 	 * @version 1.0
@@ -67,13 +70,15 @@ public class InsertTraningAction extends ActionSupport{
 
 		InsertTraningDAO dao = new InsertTraningDAO();
 
-		if(dao.insertTraning(name, category, goal, nop_min, nop_max, organize, traning_text,
-				phenomenon, img) > 0) {
+		if (dao.insertTraning(name, category, goal, nop_min, nop_max, organize, traning_text, phenomenon, img) > 0) {
 
-			if(dao.insertKeyword(keyword) > 0) {
+			for (int i = 0; i < getkeyword.size(); i++) {
 
+				String keyword = getkeyword.get(i);
+				if (dao.insertKeyword(keyword) > 0) {
 
-			result = SUCCESS;
+					result = SUCCESS;
+				}
 			}
 		}
 		return result;
@@ -87,7 +92,8 @@ public class InsertTraningAction extends ActionSupport{
 	}
 
 	/**
-	 * @param name セットする トレーニング名
+	 * @param name
+	 *            セットする トレーニング名
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -101,7 +107,8 @@ public class InsertTraningAction extends ActionSupport{
 	}
 
 	/**
-	 * @param category セットする 練習の局面
+	 * @param category
+	 *            セットする 練習の局面
 	 */
 	public void setCategory(int category) {
 		this.category = category;
@@ -115,7 +122,8 @@ public class InsertTraningAction extends ActionSupport{
 	}
 
 	/**
-	 * @param goal セットする トレーニングの目的
+	 * @param goal
+	 *            セットする トレーニングの目的
 	 */
 	public void setGoal(String goal) {
 		this.goal = goal;
@@ -129,7 +137,8 @@ public class InsertTraningAction extends ActionSupport{
 	}
 
 	/**
-	 * @param nop_min セットする トレーニング参加人数の最小値
+	 * @param nop_min
+	 *            セットする トレーニング参加人数の最小値
 	 */
 	public void setNop_min(int nop_min) {
 		this.nop_min = nop_min;
@@ -143,7 +152,8 @@ public class InsertTraningAction extends ActionSupport{
 	}
 
 	/**
-	 * @param nop_max セットする トレーニング参加人数の最大値
+	 * @param nop_max
+	 *            セットする トレーニング参加人数の最大値
 	 */
 	public void setNop_max(int nop_max) {
 		this.nop_max = nop_max;
@@ -157,7 +167,8 @@ public class InsertTraningAction extends ActionSupport{
 	}
 
 	/**
-	 * @param organize セットする トレーニング範囲
+	 * @param organize
+	 *            セットする トレーニング範囲
 	 */
 	public void setOrganize(String organize) {
 		this.organize = organize;
@@ -171,7 +182,8 @@ public class InsertTraningAction extends ActionSupport{
 	}
 
 	/**
-	 * @param phenomenon セットする phenomenon
+	 * @param phenomenon
+	 *            セットする phenomenon
 	 */
 	public void setPhenomenon(String phenomenon) {
 		this.phenomenon = phenomenon;
@@ -185,24 +197,27 @@ public class InsertTraningAction extends ActionSupport{
 	}
 
 	/**
-	 * @param img セットする img
+	 * @param img
+	 *            セットする img
 	 */
 	public void setImg(String img) {
 		this.img = img;
 	}
 
+
+
 	/**
-	 * @return keyword
+	 * @return getkeyword
 	 */
-	public String getKeyword() {
-		return keyword;
+	public ArrayList<String> getGetkeyword() {
+		return getkeyword;
 	}
 
 	/**
-	 * @param keyword セットする keyword
+	 * @param getkeyword セットする getkeyword
 	 */
-	public void setKeyword(String keyword) {
-		this.keyword = keyword;
+	public void setGetkeyword(ArrayList<String> getkeyword) {
+		this.getkeyword = getkeyword;
 	}
 
 	/**
@@ -213,11 +228,11 @@ public class InsertTraningAction extends ActionSupport{
 	}
 
 	/**
-	 * @param traning_text セットする traning_text トレーニング方法
+	 * @param traning_text
+	 *            セットする traning_text トレーニング方法
 	 */
 	public void setTraning_text(String traning_text) {
 		this.traning_text = traning_text;
 	}
-
 
 }
