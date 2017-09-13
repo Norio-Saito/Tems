@@ -75,6 +75,7 @@ public class InsertTraningAction extends ActionSupport {
 			for (int i = 0; i < getkeyword.size(); i++) {
 
 				String keyword = getkeyword.get(i);
+				System.out.println(keyword);
 				if (dao.insertKeyword(keyword) > 0) {
 
 					result = SUCCESS;

@@ -83,7 +83,7 @@ form div {
 					<!-- キーワード -->
 					<div class="input-group" id="keyword1">
 						<span class="input-group-addon">キーワード1</span> <input type="text"
-							name="keyword" class="form-control" placeholder="シュートなど">
+							name="getkeyword" class="form-control" placeholder="シュートなど">
 					</div>
 					<div class="btn btn-default" id="addForm">
 								キーワードを追加
@@ -123,7 +123,7 @@ form div {
 							$('#keyword' + count)
 									.after('<div class="input-group" id="keyword' + id +'">'
 											+'<span class="input-group-addon">キーワード' + id + '</span> <input type="text"'
-											+'name="keyword" class="form-control" placeholder="シュートなど">'
+											+'name="getkeyword" class="form-control" placeholder="シュートなど">'
 											+'</div>');
 							count++;
 							id++;
