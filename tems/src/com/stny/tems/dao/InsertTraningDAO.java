@@ -48,7 +48,7 @@ public class InsertTraningDAO {
 	 *            画像パス
 	 */
 	public int insertTraning(String name, int category, String goal, int nop_min, int nop_max, String organize,
-			String traning_text, String phenomenon, String img) {
+			String traning_text, String phenomenon, int img_count) {
 		int count = 0;
 
 		Connection con = DBConnector.getConnection();
@@ -65,7 +65,7 @@ public class InsertTraningDAO {
 			ps.setString(6, organize);
 			ps.setString(7, traning_text);
 			ps.setString(8, phenomenon);
-			ps.setString(9, img);
+			ps.setInt(9, img_count);
 
 			count = ps.executeUpdate();
 			ResultSet rs = ps.getGeneratedKeys();

@@ -1,11 +1,18 @@
 package com.stny.tems.action;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.commons.io.FileUtils;
+import org.apache.struts2.interceptor.ServletRequestAware;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.stny.tems.dao.InsertTraningDAO;
 
-public class InsertTraningAction extends ActionSupport {
+public class InsertTraningAction extends ActionSupport implements ServletRequestAware{
 
 	/**
 	 * トレーニング名
@@ -48,14 +55,29 @@ public class InsertTraningAction extends ActionSupport {
 	private String phenomenon;
 
 	/**
-	 * トレーニングイメージ
+	 * トレーニングイメージデータ
 	 */
-	private String img;
+	private ArrayList<File> img_dataList = new ArrayList<>();
+
+	/**
+	 * トレーニング画像名
+	 */
+	private ArrayList<String> img_fileFileNameList = new ArrayList<>();
+
+	/**
+	 * トレーニング画像形式
+	 */
+	private ArrayList<String> img_fileContentTypeList = new ArrayList<>();
 
 	/**
 	 * キーワード
 	 */
 	private ArrayList<String> getkeyword = new ArrayList<>();
+
+    /**
+     * リクエスト
+     */
+    private HttpServletRequest request;
 
 	/**
 	 * トレーニングの情報を登録できたらSUCCESSを返す
@@ -70,8 +92,27 @@ public class InsertTraningAction extends ActionSupport {
 
 		InsertTraningDAO dao = new InsertTraningDAO();
 
-		if (dao.insertTraning(name, category, goal, nop_min, nop_max, organize, traning_text, phenomenon, img) > 0) {
 
+
+		if (dao.insertTraning(name, category, goal, nop_min, nop_max, organize, traning_text, phenomenon, img_dataList.size()) > 0) {
+
+			//トレーニング画像を入力された分コピー
+			for(int i = 0; i < img_dataList.size(); i++) {
+				String basePath = request.getServletContext().getRealPath("/");
+
+				try {
+				File traning_destFile = new File(basePath + "img\\", img_fileFileNameList.get(i));
+				FileUtils.copyFile(img_dataList.get(i), traning_destFile);
+
+				System.out.println("ベースパス" + basePath);
+				System.out.println("ですとファイル" + traning_destFile);
+
+				}catch(IOException e) {
+					e.printStackTrace();
+				}
+			}
+
+			//キーワードを入力された数分インサート
 			for (int i = 0; i < getkeyword.size(); i++) {
 
 				String keyword = getkeyword.get(i);
@@ -191,23 +232,6 @@ public class InsertTraningAction extends ActionSupport {
 	}
 
 	/**
-	 * @return img
-	 */
-	public String getImg() {
-		return img;
-	}
-
-	/**
-	 * @param img
-	 *            セットする img
-	 */
-	public void setImg(String img) {
-		this.img = img;
-	}
-
-
-
-	/**
 	 * @return getkeyword
 	 */
 	public ArrayList<String> getGetkeyword() {
@@ -234,6 +258,38 @@ public class InsertTraningAction extends ActionSupport {
 	 */
 	public void setTraning_text(String traning_text) {
 		this.traning_text = traning_text;
+	}
+
+	public ArrayList<File> getImg_dataList() {
+		return img_dataList;
+	}
+
+	public void setImg_dataList(ArrayList<File> img_dataList) {
+		this.img_dataList = img_dataList;
+	}
+
+	public ArrayList<String> getImg_fileFileNameList() {
+		return img_fileFileNameList;
+	}
+
+	public void setImg_fileFileNameList(ArrayList<String> img_fileFileNameList) {
+		this.img_fileFileNameList = img_fileFileNameList;
+	}
+
+	public ArrayList<String> getImg_fileContentTypeList() {
+		return img_fileContentTypeList;
+	}
+
+	public void setImg_fileContentTypeList(ArrayList<String> img_fileContentTypeList) {
+		this.img_fileContentTypeList = img_fileContentTypeList;
+	}
+
+	public HttpServletRequest getRequest() {
+		return request;
+	}
+
+	public void setServletRequest(HttpServletRequest request) {
+		this.request = request;
 	}
 
 }

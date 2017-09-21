@@ -21,7 +21,6 @@
 form div {
 	margin: 30px;
 }
-
 </style>
 </head>
 <body>
@@ -33,35 +32,36 @@ form div {
 			<div class="panel-heading">トレーニングを投稿する</div>
 			<div class="panel-body">
 				<form class="form-horizontal" action="InsertTraningAction"
-					method="post">
+					enctype="multipart/form-data" method="post">
 					<!-- トレーニング名の入力フォーム -->
 					<div class="input-group">
 						<span class="input-group-addon">トレーニング名</span> <input type="text"
 							name="name" class="form-control" placeholder="トレーニング名を入力">
 					</div>
 					<!-- トレーニング種別のドロップダウン -->
-										<!-- 選択ボックス -->
-										<div class="input-group">
-											<span class="input-group-addon">トレーニング種別を選択</span>
-											<select class="form-control" style="width:30%;" name="category">
-												<option value="0">攻撃系</option>
-												<option value="1">守備系</option>
-												<option value="2">ポゼッション</option>
-												<option value="3">セットプレー</option>
-											</select>
-										</div>
-						<!-- 目標 -->
-						<div class="input-group">
-						<span class="input-group-addon">トレーニングの目的</span> <input type="text"
-							name="goal" class="form-control" placeholder="選手間の連動性を高めるなど">
+					<!-- 選択ボックス -->
+					<div class="input-group">
+						<span class="input-group-addon">トレーニング種別を選択</span> <select
+							class="form-control" style="width: 30%;" name="category">
+							<option value="0">攻撃系</option>
+							<option value="1">守備系</option>
+							<option value="2">ポゼッション</option>
+							<option value="3">セットプレー</option>
+						</select>
+					</div>
+					<!-- 目標 -->
+					<div class="input-group">
+						<span class="input-group-addon">トレーニングの目的</span> <input
+							type="text" name="goal" class="form-control"
+							placeholder="選手間の連動性を高めるなど">
 					</div>
 					<!-- 人数を入力 -->
 					<div class="input-group">
 						<!-- 最小人数を入力 -->
 						<span class="input-group-addon">最小人数</span> <input type="text"
 							name="nop_min" class="form-control" placeholder="トレーニング人数を入力">
-							<!-- 最大人数を入力 -->
-							<span class="input-group-addon">最大人数</span> <input type="text"
+						<!-- 最大人数を入力 -->
+						<span class="input-group-addon">最大人数</span> <input type="text"
 							name="nop_max" class="form-control" placeholder="トレーニング人数を入力">
 					</div>
 					<!-- トレーニング範囲 -->
@@ -85,14 +85,15 @@ form div {
 						<span class="input-group-addon">キーワード1</span> <input type="text"
 							name="getkeyword" class="form-control" placeholder="シュートなど">
 					</div>
-					<div class="btn btn-default" id="addForm">
-								キーワードを追加
-							</div>
+					<div class="btn btn-default" id="addForm">キーワードを追加</div>
+					<div class="btn btn-default" id="delKeyword">キーワードを削除</div>
 					<!-- 画像ファイルの選択 -->
-					<div class="input-group text-center">
-						<span class="input-group-addon">画像</span> <input type="file"
-							name="img" class="form-control">
+					<div class="input-group text-center" id="addImg1">
+						<span class="input-group-addon">画像1</span> <input type="file"
+							name="img_dataList" class="form-control">
 					</div>
+					<div class="btn btn-default" id="addImgForm">画像を追加</div>
+					<div class="btn btn-default" id="delImg">画像を削除</div>
 					<!-- 送信ボタン -->
 					<div class="text-center">
 						<button type="submit" class="btn btn-success">投稿する</button>
@@ -109,26 +110,77 @@ form div {
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 	<script>
-	$(function() {
-		/***************************************************************************
-		 * afterは要素の後ろに追加
-		 **************************************************************************/
-		// btn_demoBがクリックされた時...
-		var count = 1;
-		var id = 2;
-		$('#addForm')
-				.click(
-						function() {
-							// demoBの中のpタグにafterの処理をする ※pタグの直後に追加
-							$('#keyword' + count)
-									.after('<div class="input-group" id="keyword' + id +'">'
-											+'<span class="input-group-addon">キーワード' + id + '</span> <input type="text"'
+		$(function() {
+
+			var kCount = 1;
+			var kId = 2;
+
+			$(function() {
+
+				// キーワード追加ボタンがクリックされた時...
+				$('#addForm')
+						.click(
+								function() {
+
+									$('#keyword' + kCount)
+											.after(
+													'<div class="input-group" id="keyword' + kId +'">'
+															+ '<span class="input-group-addon">キーワード'
+															+ kId
+															+ '</span> <input type="text"'
 											+'name="getkeyword" class="form-control" placeholder="シュートなど">'
-											+'</div>');
-							count++;
-							id++;
-						});
-	});
+															+ '</div>');
+									kCount++;
+									kId++;
+								});
+			});
+
+			$('#delKeyword').click(function() {
+
+				if (kId != 2) {
+					$('#keyword' + (kId - 1)).remove();
+
+					kCount--;
+					kId--;
+				}
+			});
+		});
+
+		$(function() {
+
+			var imgCount = 1;
+			var imgId = 2;
+
+			$(function() {
+
+				// 画像追加ボタンがクリックされた時...
+
+				$('#addImgForm')
+						.click(
+								function() {
+
+									$('#addImg' + imgCount)
+											.after(
+													'<div class="input-group text-center" id="addImg' + imgId +'">'
+															+ '<span class="input-group-addon">画像'
+															+ imgId
+															+ '</span> <input type="file"'
+											+'name="img_dataList" class="form-control">'
+															+ '</div>');
+									imgCount++;
+									imgId++;
+								});
+			});
+			$('#delImg').click(function() {
+
+				if (imgId != 2) {
+					$('#addImg' + (imgId - 1)).remove();
+
+					imgCount--;
+					imgId--;
+				}
+			});
+		});
 	</script>
 </body>
 </html>
