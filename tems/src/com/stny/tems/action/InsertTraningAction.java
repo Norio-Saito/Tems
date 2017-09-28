@@ -92,7 +92,7 @@ public class InsertTraningAction extends ActionSupport implements ServletRequest
 
 		InsertTraningDAO dao = new InsertTraningDAO();
 
-
+System.out.println(img_dataList.size());
 
 		if (dao.insertTraning(name, category, goal, nop_min, nop_max, organize, traning_text, phenomenon, img_dataList.size()) > 0) {
 
