@@ -90,7 +90,7 @@ form div {
 					<!-- 画像ファイルの選択 -->
 					<div class="input-group text-center" id="addImg1">
 						<span class="input-group-addon">画像1</span> <input type="file"
-							name="img_dataList" class="form-control">
+							name="img_file" class="form-control">
 					</div>
 					<div class="btn btn-default" id="addImgForm">画像を追加</div>
 					<div class="btn btn-default" id="delImg">画像を削除</div>

@@ -57,17 +57,17 @@ public class InsertTraningAction extends ActionSupport implements ServletRequest
 	/**
 	 * トレーニングイメージデータ
 	 */
-	private ArrayList<File> img_dataList = new ArrayList<>();
+	private ArrayList<File> img_file = new ArrayList<>();
 
 	/**
 	 * トレーニング画像名
 	 */
-	private ArrayList<String> img_fileFileNameList = new ArrayList<>();
+	private ArrayList<String> img_fileFileName = new ArrayList<>();
 
 	/**
 	 * トレーニング画像形式
 	 */
-	private ArrayList<String> img_fileContentTypeList = new ArrayList<>();
+	private ArrayList<String> img_fileContentType = new ArrayList<>();
 
 	/**
 	 * キーワード
@@ -92,25 +92,25 @@ public class InsertTraningAction extends ActionSupport implements ServletRequest
 
 		InsertTraningDAO dao = new InsertTraningDAO();
 
-System.out.println(img_dataList.size());
+System.out.println("img_data:" + img_file.size());
+System.out.println("fileNameList" + img_fileFileName.size());
 
-		if (dao.insertTraning(name, category, goal, nop_min, nop_max, organize, traning_text, phenomenon, img_dataList.size()) > 0) {
+		if (dao.insertTraning(name, category, goal, nop_min, nop_max, organize, traning_text, phenomenon, img_file.size()) > 0) {
 
 			//トレーニング画像を入力された分コピー
-			for(int i = 0; i < img_dataList.size(); i++) {
+			for(int i = 0; i < img_file.size(); i++) {
 				String basePath = request.getServletContext().getRealPath("/");
 
 				try {
-				File traning_destFile = new File(basePath + "img\\", img_fileFileNameList.get(i));
-				FileUtils.copyFile(img_dataList.get(i), traning_destFile);
-
-				System.out.println("ベースパス" + basePath);
-				System.out.println("ですとファイル" + traning_destFile);
+				File traning_destFile = new File(basePath + "img\\", img_fileFileName.get(i));
+				FileUtils.copyFile(img_file.get(i), traning_destFile);
 
 				}catch(IOException e) {
 					e.printStackTrace();
 				}
+				
 			}
+			
 
 			//キーワードを入力された数分インサート
 			for (int i = 0; i < getkeyword.size(); i++) {
@@ -260,28 +260,28 @@ System.out.println(img_dataList.size());
 		this.traning_text = traning_text;
 	}
 
-	public ArrayList<File> getImg_dataList() {
-		return img_dataList;
+	public ArrayList<File> getImg_file() {
+		return img_file;
 	}
 
-	public void setImg_dataList(ArrayList<File> img_dataList) {
-		this.img_dataList = img_dataList;
+	public void setImg_file(ArrayList<File> img_file) {
+		this.img_file = img_file;
 	}
 
-	public ArrayList<String> getImg_fileFileNameList() {
-		return img_fileFileNameList;
+	public ArrayList<String> getImg_fileFileName() {
+		return img_fileFileName;
 	}
 
-	public void setImg_fileFileNameList(ArrayList<String> img_fileFileNameList) {
-		this.img_fileFileNameList = img_fileFileNameList;
+	public void setImg_fileFileName(ArrayList<String> img_fileFileName) {
+		this.img_fileFileName = img_fileFileName;
 	}
 
-	public ArrayList<String> getImg_fileContentTypeList() {
-		return img_fileContentTypeList;
+	public ArrayList<String> getImg_fileContentType() {
+		return img_fileContentType;
 	}
 
-	public void setImg_fileContentTypeList(ArrayList<String> img_fileContentTypeList) {
-		this.img_fileContentTypeList = img_fileContentTypeList;
+	public void setImg_fileContentType(ArrayList<String> img_fileContentType) {
+		this.img_fileContentType = img_fileContentType;
 	}
 
 	public HttpServletRequest getRequest() {

@@ -28,3 +28,10 @@ create table keyword_table(
   keyword varchar(50),
   primary key (id)
 );
+
+create img (
+	img_id int auto_increment,
+	img_path String text
+	primary key (img_id)
+)
+
