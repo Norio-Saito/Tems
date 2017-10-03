@@ -109,6 +109,29 @@ public class InsertTraningDAO {
 		return count;
 	}
 
+	public int insertImg(String fileName) {
+		int count = 0;
+		Connection con = DBConnector.getConnection();
+		String sql = "INSERT INTO img(t_id, img_path) VALUE(?, ?)";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, traning_id);
+			ps.setString(2, fileName);
+
+			count = ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+	}
+		return count;
+	}
+
 	/**
 	 * @return traning_id 自動生成されたトレーニングID
 	 */

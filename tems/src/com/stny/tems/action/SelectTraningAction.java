@@ -16,7 +16,17 @@ public class SelectTraningAction extends ActionSupport{
 	/**
 	 * トレーニングID
 	 */
-//	private String traning_id;
+	private String traningId;
+	
+	/**
+	 * 画像パスのリスト
+	 */
+	private ArrayList<SelectTraningDTO> pathList = new ArrayList<>();
+	
+	/**
+	 * キーワードのリスト
+	 */
+	private ArrayList<SelectTraningDTO> keywordList = new ArrayList<>();
 
 
 	/**
@@ -36,6 +46,14 @@ public class SelectTraningAction extends ActionSupport{
 		SelectTraningDAO dao = new SelectTraningDAO();
 		if(dao.SelectTraningList()) {
 			setTraningList(dao.getTraningList());;
+			
+			for(int i = 0; i < traningList.size(); i++) {
+				
+				if(dao.selectImg(traningList.get(i).getTraning_id())) {
+					setPathList(dao.getPathList());
+				}
+				
+			}
 
 			//ページネーション作成の処理を入れるかも
 
@@ -56,6 +74,48 @@ public class SelectTraningAction extends ActionSupport{
 	 */
 	public void setTraningList(ArrayList<SelectTraningDTO> traningList) {
 		this.traningList = traningList;
+	}
+
+	/**
+	 * @return traningId
+	 */
+	public String getTraningId() {
+		return traningId;
+	}
+
+	/**
+	 * @param traningId セットする traningId
+	 */
+	public void setTraningId(String traningId) {
+		this.traningId = traningId;
+	}
+
+	/**
+	 * @return pathList
+	 */
+	public ArrayList<SelectTraningDTO> getPathList() {
+		return pathList;
+	}
+
+	/**
+	 * @param pathList セットする pathList
+	 */
+	public void setPathList(ArrayList<SelectTraningDTO> pathList) {
+		this.pathList = pathList;
+	}
+
+	/**
+	 * @return keywordList
+	 */
+	public ArrayList<SelectTraningDTO> getKeywordList() {
+		return keywordList;
+	}
+
+	/**
+	 * @param keywordList セットする keywordList
+	 */
+	public void setKeywordList(ArrayList<SelectTraningDTO> keywordList) {
+		this.keywordList = keywordList;
 	}
 
 	/**

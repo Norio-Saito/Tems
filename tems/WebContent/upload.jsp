@@ -165,7 +165,7 @@ form div {
 															+ '<span class="input-group-addon">画像'
 															+ imgId
 															+ '</span> <input type="file"'
-											+'name="img_dataList" class="form-control">'
+											+'name="img_file" class="form-control">'
 															+ '</div>');
 									imgCount++;
 									imgId++;

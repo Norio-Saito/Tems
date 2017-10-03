@@ -74,6 +74,11 @@ public class InsertTraningAction extends ActionSupport implements ServletRequest
 	 */
 	private ArrayList<String> getkeyword = new ArrayList<>();
 
+	/**
+	 * DBに保存する画像パス
+	 */
+	private String fileName;
+
     /**
      * リクエスト
      */
@@ -104,13 +109,17 @@ System.out.println("fileNameList" + img_fileFileName.size());
 				try {
 				File traning_destFile = new File(basePath + "img\\", img_fileFileName.get(i));
 				FileUtils.copyFile(img_file.get(i), traning_destFile);
+				fileName = basePath + "img\\" + img_fileFileName.get(i);
 
 				}catch(IOException e) {
 					e.printStackTrace();
 				}
-				
+
+				if(dao.insertImg(fileName) > 0) {
+					result = SUCCESS;
+				}
 			}
-			
+
 
 			//キーワードを入力された数分インサート
 			for (int i = 0; i < getkeyword.size(); i++) {
@@ -289,6 +298,27 @@ System.out.println("fileNameList" + img_fileFileName.size());
 	}
 
 	public void setServletRequest(HttpServletRequest request) {
+		this.request = request;
+	}
+
+	/**
+	 * @return fileName
+	 */
+	public String getFileName() {
+		return fileName;
+	}
+
+	/**
+	 * @param fileName セットする fileName
+	 */
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
+	/**
+	 * @param request セットする request
+	 */
+	public void setRequest(HttpServletRequest request) {
 		this.request = request;
 	}
 

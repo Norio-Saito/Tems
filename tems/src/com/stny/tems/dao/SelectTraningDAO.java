@@ -23,6 +23,16 @@ public class SelectTraningDAO {
 	private ArrayList<SelectTraningDTO> traningList = new ArrayList<>();
 
 	/**
+	 * キーワードを格納するリスト
+	 */
+	private ArrayList<SelectTraningDTO> keywordList = new ArrayList<>();
+
+	/**
+	 * 画像パスを格納するリスト
+	 */
+	private ArrayList<SelectTraningDTO> pathList = new ArrayList<>();
+
+	/**
 	 * 全てのトレーニング情報を取得するメソッド
 	 * @author Norio Saito
 	 * @since 2017/9/5
@@ -67,6 +77,67 @@ public class SelectTraningDAO {
 		return result;
 	}
 
+	public boolean selectImg(int traningId) {
+		boolean result = false;
+
+		Connection con = new DBConnector().getConnection();
+
+		String sql = "SELECT * FROM img WHERE traning_id = ?";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, traningId);
+
+			ResultSet rs = ps.executeQuery();
+
+			SelectTraningDTO dto = new SelectTraningDTO();
+			dto.setImgPath(rs.getString("img_path"));
+
+			keywordList.add(dto);
+			result = true;
+
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				con.close();
+			}catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
+
+	public boolean selectKeyword(int traningId) {
+		boolean result = false;
+
+		Connection con = new DBConnector().getConnection();
+
+		String sql = "SELECT * FROM keyword_table WHERE traning_id = ?";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+
+			ps.setInt(1, traningId);
+			ResultSet rs = ps.executeQuery();
+
+			SelectTraningDTO dto = new SelectTraningDTO();
+			dto.setImgPath(rs.getString("keyword"));
+
+			pathList.add(dto);
+			result = true;
+
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				con.close();
+			}catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
 	/**
 	 * @return traningList トレーニング情報を格納するリスト
 	 */
@@ -79,5 +150,33 @@ public class SelectTraningDAO {
 	 */
 	public void setTraningList(ArrayList<SelectTraningDTO> traningList) {
 		this.traningList = traningList;
+	}
+
+	/**
+	 * @return keywordList
+	 */
+	public ArrayList<SelectTraningDTO> getKeywordList() {
+		return keywordList;
+	}
+
+	/**
+	 * @param keywordList セットする keywordList
+	 */
+	public void setKeywordList(ArrayList<SelectTraningDTO> keywordList) {
+		this.keywordList = keywordList;
+	}
+
+	/**
+	 * @return pathList
+	 */
+	public ArrayList<SelectTraningDTO> getPathList() {
+		return pathList;
+	}
+
+	/**
+	 * @param pathList セットする pathList
+	 */
+	public void setPathList(ArrayList<SelectTraningDTO> pathList) {
+		this.pathList = pathList;
 	}
 }

@@ -29,9 +29,10 @@ create table keyword_table(
   primary key (id)
 );
 
-create img (
+create table img (
 	img_id int auto_increment,
-	img_path String text
+	t_id int,
+	img_path text,
 	primary key (img_id)
-)
+);
 

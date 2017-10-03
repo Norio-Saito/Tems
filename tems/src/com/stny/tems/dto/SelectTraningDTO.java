@@ -55,9 +55,19 @@ public class SelectTraningDTO {
 	private String phenomenon;
 
 	/**
-	 * トレーニング画像
+	 * トレーニング画像の枚数
 	 */
 	private String img;
+
+	/**
+	 * トレーニング画像のパス
+	 */
+	private String imgPath;
+
+	/**
+	 * キーワード
+	 */
+	private String keyword;
 
 	/**
 	 * @return traning_id トレーニングID
@@ -197,6 +207,34 @@ public class SelectTraningDTO {
 	 */
 	public void setImg(String img) {
 		this.img = img;
+	}
+
+	/**
+	 * @return imgPath
+	 */
+	public String getImgPath() {
+		return imgPath;
+	}
+
+	/**
+	 * @param imgPath セットする imgPath
+	 */
+	public void setImgPath(String imgPath) {
+		this.imgPath = imgPath;
+	}
+
+	/**
+	 * @return keyword
+	 */
+	public String getKeyword() {
+		return keyword;
+	}
+
+	/**
+	 * @param keyword セットする keyword
+	 */
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
 	}
 
 }
