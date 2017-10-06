@@ -17,12 +17,12 @@ public class SelectTraningAction extends ActionSupport{
 	 * トレーニングID
 	 */
 	private String traningId;
-	
+
 	/**
 	 * 画像パスのリスト
 	 */
 	private ArrayList<SelectTraningDTO> pathList = new ArrayList<>();
-	
+
 	/**
 	 * キーワードのリスト
 	 */
@@ -46,14 +46,6 @@ public class SelectTraningAction extends ActionSupport{
 		SelectTraningDAO dao = new SelectTraningDAO();
 		if(dao.SelectTraningList()) {
 			setTraningList(dao.getTraningList());;
-			
-			for(int i = 0; i < traningList.size(); i++) {
-				
-				if(dao.selectImg(traningList.get(i).getTraning_id())) {
-					setPathList(dao.getPathList());
-				}
-				
-			}
 
 			//ページネーション作成の処理を入れるかも
 
