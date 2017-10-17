@@ -89,6 +89,64 @@ public class SelectTraningDAO {
 		return result;
 	}
 
+	/**
+	 * トレーニングを新着順で取得するメソッド
+	 * @param traningId
+	 * @param name
+	 * @param category
+	 * @return false, true
+	 */
+	public boolean selectTraningNewOrder(String traningId, String name, String category) {
+		boolean result = false;
+
+		Connection con = DBConnector.getConnection();
+		String sql = "SELECT * FROM traning_main where traning_id like ? and name like ? and category like ? "
+				+ "ORDER BY registration_date DESC";
+
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+
+			if(traningId == "") {
+				ps.setString(1, "%" + traningId + "%");
+			}else {
+				ps.setString(1, traningId);
+			}
+
+			ps.setString(2, "%" + name + "%");
+			ps.setString(3, "%" + category + "%");
+
+			ResultSet rs = ps.executeQuery();
+
+			while(rs.next()) {
+				SelectTraningDTO dto = new SelectTraningDTO();
+
+				dto.setTraning_id(rs.getInt("traning_id"));
+				dto.setName(rs.getString("name"));
+				dto.setCategory(rs.getInt("category"));
+				dto.setGoal(rs.getString("goal"));
+				dto.setNop_max(rs.getInt("nop_max"));
+				dto.setNop_min(rs.getInt("nop_min"));
+				dto.setOrganize(rs.getString("organize"));
+				dto.setTraning_text(rs.getString("traning_text"));
+				dto.setPhenomenon(rs.getString("phenomenon"));
+				dto.setImg(rs.getString("img"));
+				traningList.add(dto);
+				result = true;
+
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				con.close();
+			}catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return result;
+	}
+
 	public boolean selectImg(int traningId) {
 		boolean result = false;
 

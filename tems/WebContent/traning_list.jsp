@@ -70,7 +70,9 @@
 						並び替え <span class="caret"></span>
 					</button>
 					<ul class="dropdown-menu" role="menu">
-						<li role="presentation"><a href="#">新着順</a></li>
+						<li role="presentation">
+							<a href="<s:url action='SelectTraningAction'><s:param name='sortFlg' value='1'/></s:url>">新着順</a>
+						</li>
 						<li role="presentation"><a href="#">レビューの高い順</a></li>
 						<li role="presentation"><a href="#">閲覧数の多い順</a></li>
 					</ul>

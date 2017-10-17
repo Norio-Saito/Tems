@@ -6,7 +6,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.stny.tems.dao.SelectTraningDAO;
 import com.stny.tems.dto.SelectTraningDTO;
 
-public class SelectTraningAction extends ActionSupport{
+public class SelectTraningAction extends ActionSupport {
 
 	/**
 	 * トレーニング名
@@ -39,13 +39,18 @@ public class SelectTraningAction extends ActionSupport{
 	private ArrayList<SelectTraningDTO> keywordList = new ArrayList<>();
 
 	/**
+	 * 並び替えフラグ
+	 */
+	private int sortFlg;
+
+	/**
 	 * エラーメッセージ
 	 */
 	private String err;
 
-
 	/**
 	 * トレーニング一覧を取得できたら、SUCCESSを返すメソッド
+	 *
 	 * @author user Norio Saito
 	 * @since 2017/9/5
 	 * @version 1.0
@@ -54,30 +59,46 @@ public class SelectTraningAction extends ActionSupport{
 	public String execute() {
 		String result = ERROR;
 
-		if(searchName == null) {
+		if (searchName == null) {
 			searchName = "";
 		}
 
-		if(searchCategory == null) {
+		if (searchCategory == null) {
 			searchCategory = "";
 		}
 
-		if(searchTraningId == null) {
+		if (searchTraningId == null) {
 			searchTraningId = "";
 		}
 
+		/*
+		 * 並び替えなし
+		 */
+		if (sortFlg == 0) {
+			SelectTraningDAO dao = new SelectTraningDAO();
+			if (dao.SelectTraningList(searchTraningId, searchName, searchCategory)) {
+				setTraningList(dao.getTraningList());
 
-		SelectTraningDAO dao = new SelectTraningDAO();
-		if(dao.SelectTraningList(searchTraningId, searchName, searchCategory)) {
-			setTraningList(dao.getTraningList());;
+				// ページネーション作成の処理を入れるかも
 
-			//ページネーション作成の処理を入れるかも
+				result = SUCCESS;
+			} else {
+				err = "該当のトレーニングはありません。";
+			}
+		} else if (sortFlg == 1) {
+			/*
+			 * 新着順で並び替え
+			 */
+			SelectTraningDAO dao = new SelectTraningDAO();
+			if (dao.selectTraningNewOrder(searchTraningId, searchName, searchCategory)) {
+				setTraningList(dao.getTraningList());
 
-			result = SUCCESS;
-		}else {
-			err = "該当のトレーニングはありません。";
+				result = SUCCESS;
+			}else {
+				err = "該当のトレーニングはありません。";
+			}
 		}
-System.out.println("検索結果" + result);
+		System.out.println("検索結果" + result);
 		return result;
 	}
 
@@ -89,7 +110,8 @@ System.out.println("検索結果" + result);
 	}
 
 	/**
-	 * @param traningList セットする traningList トレーニング情報を格納するリスト
+	 * @param traningList
+	 *            セットする traningList トレーニング情報を格納するリスト
 	 */
 	public void setTraningList(ArrayList<SelectTraningDTO> traningList) {
 		this.traningList = traningList;
@@ -103,7 +125,8 @@ System.out.println("検索結果" + result);
 	}
 
 	/**
-	 * @param traningId セットする traningId
+	 * @param traningId
+	 *            セットする traningId
 	 */
 	public void setSearchTraningId(String searchTraningId) {
 		this.searchTraningId = searchTraningId;
@@ -117,7 +140,8 @@ System.out.println("検索結果" + result);
 	}
 
 	/**
-	 * @param pathList セットする pathList
+	 * @param pathList
+	 *            セットする pathList
 	 */
 	public void setPathList(ArrayList<SelectTraningDTO> pathList) {
 		this.pathList = pathList;
@@ -131,7 +155,8 @@ System.out.println("検索結果" + result);
 	}
 
 	/**
-	 * @param keywordList セットする keywordList
+	 * @param keywordList
+	 *            セットする keywordList
 	 */
 	public void setKeywordList(ArrayList<SelectTraningDTO> keywordList) {
 		this.keywordList = keywordList;
@@ -145,7 +170,8 @@ System.out.println("検索結果" + result);
 	}
 
 	/**
-	 * @param name セットする name
+	 * @param name
+	 *            セットする name
 	 */
 	public void setSearchName(String searchName) {
 		this.searchName = searchName;
@@ -159,7 +185,8 @@ System.out.println("検索結果" + result);
 	}
 
 	/**
-	 * @param category セットする category
+	 * @param category
+	 *            セットする category
 	 */
 	public void setSearchCategory(String searchCategory) {
 		this.searchCategory = searchCategory;
@@ -173,10 +200,26 @@ System.out.println("検索結果" + result);
 	}
 
 	/**
-	 * @param err セットする err
+	 * @param err
+	 *            セットする err
 	 */
 	public void setErr(String err) {
 		this.err = err;
+	}
+
+	/**
+	 * @return sortFlg
+	 */
+	public int getSortFlg() {
+		return sortFlg;
+	}
+
+	/**
+	 * @param sortFlg
+	 *            セットする sortFlg
+	 */
+	public void setSortFlg(int sortFlg) {
+		this.sortFlg = sortFlg;
 	}
 
 }

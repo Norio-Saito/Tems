@@ -13,6 +13,7 @@ create table traning_main (
   traning_text varchar(255),
   phenomenon varchar(100),
   img varchar(255),
+  registration_date datetime not null default current_timestamp,
   primary key (traning_id)
 );
 
