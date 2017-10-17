@@ -22,10 +22,26 @@
 	<header>
 		<jsp:include page="header.jsp" />
 	</header>
-	<article>
+	<article class="container">
+		<!-- テスト -->
+		<div class="row">
+		<div class="panel panel-danger">
+			<div class="panel-heading">
+				<h3>トレーニング名</h3>
+			<span class="label label-default">攻撃系トレーニング</span>
+			</div>
+			<div class="panel-body">
+
+
+			</div>
+		</div>
+		</div>
+
+
 		<s:if test="category == 0">
 			<div class="panel panel-danger">
 				<div class="panel-heading">
+					トレーニング名
 					<s:property value="traning_name" />
 					<span class="label label-default">オフェンストレーニング</span>
 				</div>
