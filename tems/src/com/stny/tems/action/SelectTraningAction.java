@@ -9,6 +9,16 @@ import com.stny.tems.dto.SelectTraningDTO;
 public class SelectTraningAction extends ActionSupport{
 
 	/**
+	 * トレーニング名
+	 */
+	private String searchName;
+
+	/**
+	 * カテゴリー
+	 */
+	private String searchCategory;
+
+	/**
 	 * トレーニング一覧のリスト
 	 */
 	private ArrayList<SelectTraningDTO> traningList = new ArrayList<>();
@@ -16,7 +26,7 @@ public class SelectTraningAction extends ActionSupport{
 	/**
 	 * トレーニングID
 	 */
-	private String traningId;
+	private String searchTraningId;
 
 	/**
 	 * 画像パスのリスト
@@ -39,18 +49,28 @@ public class SelectTraningAction extends ActionSupport{
 	public String execute() {
 		String result = ERROR;
 
-//		if(traning_id == null) {
-//			traning_id = "";
-//		}
+		if(searchName == null) {
+			searchName = "";
+		}
+
+		if(searchCategory == null) {
+			searchCategory = "";
+		}
+
+		if(searchTraningId == null) {
+			searchTraningId = "";
+		}
+
 
 		SelectTraningDAO dao = new SelectTraningDAO();
-		if(dao.SelectTraningList()) {
+		if(dao.SelectTraningList(searchTraningId, searchName, searchCategory)) {
 			setTraningList(dao.getTraningList());;
 
 			//ページネーション作成の処理を入れるかも
 
 			result = SUCCESS;
 		}
+
 		return result;
 	}
 
@@ -71,15 +91,15 @@ public class SelectTraningAction extends ActionSupport{
 	/**
 	 * @return traningId
 	 */
-	public String getTraningId() {
-		return traningId;
+	public String getSearchTraningId() {
+		return searchTraningId;
 	}
 
 	/**
 	 * @param traningId セットする traningId
 	 */
-	public void setTraningId(String traningId) {
-		this.traningId = traningId;
+	public void setsearchTraningId(String searchTraningId) {
+		this.searchTraningId = searchTraningId;
 	}
 
 	/**
@@ -111,16 +131,31 @@ public class SelectTraningAction extends ActionSupport{
 	}
 
 	/**
-	 * @return traning_id トレーニングID
+	 * @return name
 	 */
-//	public String getTraning_id() {
-//		return traning_id;
-//	}
-//
-//	/**
-//	 * @param traning_id トレーニングIDをセットする traning_id トレーニングID
-//	 */
-//	public void setTraning_id(String traning_id) {
-//		this.traning_id = traning_id;
-//	}
+	public String getSearchName() {
+		return searchName;
+	}
+
+	/**
+	 * @param name セットする name
+	 */
+	public void setSearchName(String searchName) {
+		this.searchName = searchName;
+	}
+
+	/**
+	 * @return category
+	 */
+	public String getSearchCategory() {
+		return searchCategory;
+	}
+
+	/**
+	 * @param category セットする category
+	 */
+	public void setSearchCategory(String searchCategory) {
+		this.searchCategory = searchCategory;
+	}
+
 }

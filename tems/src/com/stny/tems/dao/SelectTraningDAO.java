@@ -39,15 +39,26 @@ public class SelectTraningDAO {
 	 * @version 1.0
 	 * @return true, false
 	 */
-	public boolean SelectTraningList() {
+	public boolean SelectTraningList(String traningId, String name, String category) {
 		boolean result = false;
 
 		Connection con = DBConnector.getConnection();
-		String sql = "SELECT * FROM traning_main";
+		String sql = "SELECT * FROM traning_main where traning_id like ? and name like ? and category like ?";
 
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
+
+			if(traningId == "") {
+				ps.setString(1, "%" + traningId + "%");
+			}else {
+				ps.setString(1, traningId);
+			}
+
+			ps.setString(2, "%" + name + "%");
+			ps.setString(3, "%" + category + "%");
+
 			ResultSet rs = ps.executeQuery();
+
 			while(rs.next()) {
 				SelectTraningDTO dto = new SelectTraningDTO();
 
@@ -74,6 +85,7 @@ public class SelectTraningDAO {
 				e.printStackTrace();
 			}
 		}
+
 		return result;
 	}
 

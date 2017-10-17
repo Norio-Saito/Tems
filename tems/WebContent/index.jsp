@@ -32,15 +32,17 @@
 	</header>
 	<article class="container">
 		<div class="row">
+		<form action="SelectTraningAction" method="post">
 			<div class="input-group input-group-lg col-sm-6 col-sm-offset-3"
 				style="margin-top: 250px;">
-				<input type="text" class="form-control" placeholder="トレーニングを検索">
+				<input name="searchName" type="text" class="form-control" placeholder="トレーニングを検索">
 				<span class="input-group-btn">
-					<button type="button" class="btn btn-default">
+					<button type="submit" class="btn btn-default">
 						<span class="glyphicon glyphicon-search"></span>
 					</button>
 				</span>
 			</div>
+		</form>
 			<div>
 				<a href="SelectTraningAction" class="button hvr-float-shadow"
 					style="font-size: 30px; margin-top: 50px;">トレーニング一覧</a> <a

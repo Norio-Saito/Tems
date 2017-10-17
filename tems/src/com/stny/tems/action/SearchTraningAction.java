@@ -41,6 +41,7 @@ public class SearchTraningAction extends ActionSupport{
 	 * @return SUCCESS, ERROR 検索できたらサクセス、できなかったらエラー
 	 */
 	public String excute() {
+
 		String result = ERROR;
 
 		if(traningId == null) {
@@ -58,6 +59,16 @@ public class SearchTraningAction extends ActionSupport{
 		if(dao.searchTraning(name, traningId, category)) {
 
 			setTraningList(dao.getTraningList());
+System.out.println(traningList.size());
+			if(traningList.size() == 1) {
+				result = "SUCCESS";
+
+			}else if(traningList.size() > 1) {
+				result = "LOGIN";
+
+			}else {
+				result = ERROR;
+			}
 		}
 
 		return result;
@@ -118,4 +129,6 @@ public class SearchTraningAction extends ActionSupport{
 	public void setTraningList(ArrayList<SelectTraningDTO> traningList) {
 		this.traningList = traningList;
 	}
+
+
 }

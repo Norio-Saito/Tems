@@ -17,10 +17,17 @@
 	<result name="error">index.jsp</result>
 </action>
 
-<!-- トレーニングを表示するアクション -->
+<!-- トレーニング一覧を表示するアクション -->
 <action name="SelectTraningAction" class="com.stny.tems.action.SelectTraningAction" method="execute">
 	<result name="success">traning_list.jsp</result>
 	<result name="error">upload.jsp</result>
+</action>
+
+<!-- トレーニングを検索するアクション -->
+<action name="SearchTraningAction" class="com.stny.tems.action.SearchTraningAction" method="execute">
+	<result name="success">traning.jsp</result>
+	<result name="login">traning_list.jsp</result>
+	<result name="error">index.jsp</result>
 </action>
 
 <!-- 投稿ページへ遷移するアクション -->
