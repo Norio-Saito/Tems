@@ -38,6 +38,11 @@ public class SelectTraningAction extends ActionSupport{
 	 */
 	private ArrayList<SelectTraningDTO> keywordList = new ArrayList<>();
 
+	/**
+	 * エラーメッセージ
+	 */
+	private String err;
+
 
 	/**
 	 * トレーニング一覧を取得できたら、SUCCESSを返すメソッド
@@ -69,8 +74,10 @@ public class SelectTraningAction extends ActionSupport{
 			//ページネーション作成の処理を入れるかも
 
 			result = SUCCESS;
+		}else {
+			err = "該当のトレーニングはありません。";
 		}
-
+System.out.println("検索結果" + result);
 		return result;
 	}
 
@@ -98,7 +105,7 @@ public class SelectTraningAction extends ActionSupport{
 	/**
 	 * @param traningId セットする traningId
 	 */
-	public void setsearchTraningId(String searchTraningId) {
+	public void setSearchTraningId(String searchTraningId) {
 		this.searchTraningId = searchTraningId;
 	}
 
@@ -156,6 +163,20 @@ public class SelectTraningAction extends ActionSupport{
 	 */
 	public void setSearchCategory(String searchCategory) {
 		this.searchCategory = searchCategory;
+	}
+
+	/**
+	 * @return err
+	 */
+	public String getErr() {
+		return err;
+	}
+
+	/**
+	 * @param err セットする err
+	 */
+	public void setErr(String err) {
+		this.err = err;
 	}
 
 }

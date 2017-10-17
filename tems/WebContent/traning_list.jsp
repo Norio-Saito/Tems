@@ -44,10 +44,21 @@
 						絞り込み <span class="caret"></span>
 					</button>
 					<ul class="dropdown-menu" role="menu">
-						<li role="presentation"><a href="#">攻撃系</a></li>
-						<li role="presentation"><a href="#">守備系</a></li>
-						<li role="presentation"><a href="#">GK</a></li>
-						<li role="presentation"><a href="#">フィジカル</a></li>
+						<li role="presentation">
+							<a href="<s:url action='SelectTraningAction'><s:param name='searchCategory' value='null'/></s:url>">すべて</a>
+						</li>
+						<li role="presentation">
+							<a href="<s:url action='SelectTraningAction'><s:param name='searchCategory' value='0'/></s:url>">攻撃系</a>
+						</li>
+						<li role="presentation">
+							<a href="<s:url action='SelectTraningAction'><s:param name='searchCategory' value='1'/></s:url>">守備系</a>
+						</li>
+						<li role="presentation">
+							<a href="<s:url action='SelectTraningAction'><s:param name='searchCategory' value='2'/></s:url>">GK</a>
+						</li>
+						<li role="presentation">
+							<a href="<s:url action='SelectTraningAction'><s:param name='searchCategory' value='3'/></s:url>">フィジカル</a>
+						</li>
 					</ul>
 				</div>
 			</div>
@@ -66,9 +77,9 @@
 				</div>
 			</div>
 		</div>
-		<!-- トレーニングの一覧。のちにイテレータで表示 -->
-		<!-- カテゴリの値によってパネルの色を変える予定 -->
+		<!-- トレーニングの一覧 -->
 		<section class="traning_list ">
+		<s:if test="traningList.size() > 0">
 			<s:iterator value="traningList">
 				<s:if test="category == 0">
 					<!-- 攻撃系のパネル（赤） -->
@@ -135,6 +146,10 @@
 					</div>
 				</s:elseif>
 			</s:iterator>
+			</s:if>
+			<s:else>
+				<p style="color:red;"><s:property value="err"/></p>
+			</s:else>
 		</section>
 
 	</article>

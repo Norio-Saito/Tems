@@ -20,7 +20,7 @@
 <!-- トレーニング一覧を表示するアクション -->
 <action name="SelectTraningAction" class="com.stny.tems.action.SelectTraningAction" method="execute">
 	<result name="success">traning_list.jsp</result>
-	<result name="error">upload.jsp</result>
+	<result name="error">traning_list.jsp</result>
 </action>
 
 <!-- トレーニングを検索するアクション -->
