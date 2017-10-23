@@ -23,11 +23,10 @@
 	<result name="error">traning_list.jsp</result>
 </action>
 
-<!-- トレーニングを検索するアクション -->
-<action name="SearchTraningAction" class="com.stny.tems.action.SearchTraningAction" method="execute">
+<!-- トレーニング詳細画面へ遷移するアクション -->
+<action name="GoTraningAction" class="com.stny.tems.action.GoTraningAction" method="execute">
 	<result name="success">traning.jsp</result>
-	<result name="login">traning_list.jsp</result>
-	<result name="error">index.jsp</result>
+	<result name="error">traning_list.jsp</result>
 </action>
 
 <!-- 投稿ページへ遷移するアクション -->

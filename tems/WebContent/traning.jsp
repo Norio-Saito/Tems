@@ -25,16 +25,46 @@
 	<article class="container">
 		<!-- テスト -->
 		<div class="row">
-		<div class="panel panel-danger">
-			<div class="panel-heading">
-				<h3>トレーニング名</h3>
-			<span class="label label-default">攻撃系トレーニング</span>
-			</div>
-			<div class="panel-body">
+			<div class="panel panel-danger">
+				<div class="panel-heading">
+					<h3>トレーニング名</h3>
+					<span class="label label-default">攻撃系トレーニング</span>
+				</div>
+				<div class="panel-body">
+					<h4 style="position:relative;
+    margin:0 -1px;
+    font:bold 30px/1.6 Arial, Helvetica, sans-serif;
+    text-align:center;
+    color:#333;
+    background:#f0e800;
+    -webkit-transform: rotate(-3deg) skew(-3deg);
+    -moz-transform: rotate(-3deg) skew(-3deg);
+    -o-transform: rotate(-3deg) skew(-3deg);
+    -ms-transform: rotate(-3deg) skew(-3deg);
+    transform: rotate(-3deg) skew(-3deg);
 
+    text-shadow:1px 1px 0 rgba(255,255,255,1);
 
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.2),
+
+                30px 0 0 0 #f0e800,
+
+                -30px 0 0 0 #f0e800;
+					">トレーニングの目的</h4>
+					<p>goal</p>
+					<h4>キーワード</h4>
+					<p>keyword</p>
+					<h4>トレーニング人数</h4>
+					<p>nop_min ~ nop_max</p>
+					<h4>トレーニング範囲</h4>
+					<p>organize</p>
+					<h4>トレーニング方法</h4>
+					<p>traning_text</p>
+					<img src="img/soccer_jpg.jpg" style="width:300px;height:100%;">
+					<h4>見るべきポイント</h4>
+					<p>phenomenon</p>
+				</div>
 			</div>
-		</div>
 		</div>
 
 

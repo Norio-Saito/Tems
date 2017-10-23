@@ -147,6 +147,11 @@ public class SelectTraningDAO {
 		return result;
 	}
 
+	/**
+	 * トレーニングの画像パスを取得するメソッド
+	 * @param traningId
+	 * @return false, true
+	 */
 	public boolean selectImg(int traningId) {
 		boolean result = false;
 
@@ -163,7 +168,7 @@ public class SelectTraningDAO {
 			SelectTraningDTO dto = new SelectTraningDTO();
 			dto.setImgPath(rs.getString("img_path"));
 
-			keywordList.add(dto);
+			pathList.add(dto);
 			result = true;
 
 		}catch (SQLException e) {
@@ -178,6 +183,11 @@ public class SelectTraningDAO {
 		return result;
 	}
 
+	/**
+	 * キーワードを取得するメソッド
+	 * @param traningId
+	 * @return false, true
+	 */
 	public boolean selectKeyword(int traningId) {
 		boolean result = false;
 
@@ -194,7 +204,7 @@ public class SelectTraningDAO {
 			SelectTraningDTO dto = new SelectTraningDTO();
 			dto.setImgPath(rs.getString("keyword"));
 
-			pathList.add(dto);
+			keywordList.add(dto);
 			result = true;
 
 		}catch (SQLException e) {

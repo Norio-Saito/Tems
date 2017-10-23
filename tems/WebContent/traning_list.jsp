@@ -25,17 +25,7 @@
 	<article class="main container">
 		<div class="row">
 			<!-- アフィックス -->
-			<!-- 検索欄は前ページに実装
-        <div class="col-sm-4 ">
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="キーワードで検索">
-            <span class="input-group-btn">
-              <button class="btn btn-default" type="submit">
-                <i class='glyphicon glyphicon-search'></i>
-              </button>
-            </span>
-          </div>
-        </div> -->
+
 			<div class="col-sm-4">
 				<!-- 絞り込み -->
 				<div class="dropdown">
@@ -87,7 +77,8 @@
 					<!-- 攻撃系のパネル（赤） -->
 					<div class="panel panel-danger">
 						<div class="panel-heading">
-							<a href="SelectTraningAction"><s:property value="name" /></a>
+							<a href='<s:url action="GoTraningAction"><s:param name="traningId" value="traning_id"/></s:url>'>
+								<s:property value="name" /></a>
 						</div>
 						<div class="panel-body" class="row">
 							<div class="col-sm-3">

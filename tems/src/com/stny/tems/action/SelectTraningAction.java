@@ -98,7 +98,7 @@ public class SelectTraningAction extends ActionSupport {
 				err = "該当のトレーニングはありません。";
 			}
 		}
-		System.out.println("検索結果" + result);
+
 		return result;
 	}
 
